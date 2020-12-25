@@ -1,0 +1,39 @@
+$pd-r: (
+  (px: 0, rem: 0),
+  (px: 4, rem: .25rem), 
+  (px: 8, rem: .5rem), 
+  (px: 10, rem: .625rem),
+  (px: 12, rem: .725rem),
+  (px: 14, rem: .875rem), 
+  (px: 16, rem: 1rem), 
+  (px: 20, rem: 1.25rem), 
+  (px: 25, rem: 1.5625rem), 
+  (px: 30, rem: 1.875rem), 
+  (px: 40, rem: 2.5rem)
+);
+
+$pd-direction: (l, r, t, b, tb, lr, both);
+
+@each $i in $pd-r {
+  @each $j in $pd-direction {
+    .pd-#{$j}-#{map-get($i, px)}r {
+      @if $j == l { // 左
+        padding-left: #{map-get($i, rem)};
+      } @else if $j == r  { // 右
+        padding-right: #{map-get($i, rem)};
+      } @else if $j == t { // 上
+        padding-top: #{map-get($i, rem)};
+      } @else if $j == b { // 下
+        padding-bottom: #{map-get($i, rem)};
+      } @else if $j == lr { // 左右
+        padding-left: #{map-get($i, rem)};
+        padding-right: #{map-get($i, rem)};
+      } @else if $j == tb { // 上下
+        padding-top: #{map-get($i, rem)};
+        padding-bottom: #{map-get($i, rem)};
+      } @else if $j == both { // 所有方向
+        padding: #{map-get($i, rem)};
+      }
+    }
+  }
+}

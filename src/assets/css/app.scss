@@ -1,0 +1,11 @@
+a {
+    color: $black;
+    text-decoration: none;
+}
+
+:global {
+    // 不被 :global 包裹着，为何不起用作？
+    .router-link-active {
+        color: red !important;
+    }
+}
